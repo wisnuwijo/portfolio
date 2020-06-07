@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import Navigation from './components/navigation/navigation';
+import Hero from './components/hero/hero';
+import About from './components/about/about';
+import Skill from './components/skill/skill';
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import './App.css';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navigation />
+        <Switch>
+          {/* when you using switch only one route loaded, order matter */}
+          <Route path="/" exact component={Hero} />
+          <Route path="/about" component={About} />
+          <Route path="/skills" component={Skill} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
